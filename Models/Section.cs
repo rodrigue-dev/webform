@@ -7,5 +7,6 @@ namespace b_school.Models
 {
     public class Section
     {
+        public int ID { get; set; }
     }
 }
