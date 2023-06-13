@@ -5,7 +5,7 @@ using System.Web;
 
 namespace b_school.Models
 {
-    public class Section
+    public class SessionUe
     {
     }
 }
