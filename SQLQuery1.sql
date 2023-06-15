@@ -1,0 +1,31 @@
+﻿USE [aspnet-b-school-20230612023455]
+GO
+/****** Object:  Table [dbo].[professeur]    Script Date: 10/06/2023 9:34:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[professeur](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [nvarchar](50) NOT NULL,
+	[LastName] [nvarchar](50) NOT NULL,
+	[Phone] [nvarchar](20) NOT NULL,
+	[Email] [nvarchar] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+CREATE TABLE [dbo].[secteur](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Intitule] [nvarchar](50) NOT NULL,
+	[DateDebut] [date] NOT NULL,
+	[DateFin] [date] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO

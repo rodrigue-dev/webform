@@ -12,14 +12,14 @@ namespace b_school.Account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            RegisterHyperLink.NavigateUrl = "Register";
+            //RegisterHyperLink.NavigateUrl = "Register";
             // Enable this once you have account confirmation enabled for password reset functionality
             //ForgotPasswordHyperLink.NavigateUrl = "Forgot";
-            OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
+            //OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
             var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
             if (!String.IsNullOrEmpty(returnUrl))
             {
-                RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
+               // RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
             }
         }
 
@@ -38,7 +38,7 @@ namespace b_school.Account
                 switch (result)
                 {
                     case SignInStatus.Success:
-                        IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                        IdentityHelper.RedirectToReturnUrl("/admin/dashboard", Response);
                         break;
                     case SignInStatus.LockedOut:
                         Response.Redirect("/Account/Lockout");

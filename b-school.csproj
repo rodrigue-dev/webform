@@ -164,8 +164,15 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="admin\add_professeur.aspx" />
+    <Content Include="admin\add_secteur.aspx" />
+    <Content Include="admin\add_section.aspx" />
+    <Content Include="admin\add_sessionue.aspx" />
+    <Content Include="admin\add_ue.aspx" />
+    <Content Include="admin\dashboard.aspx" />
     <Content Include="admin\secteur.aspx" />
     <Content Include="admin\section.aspx" />
+    <Content Include="admin\sessionUE.aspx" />
     <Content Include="admin\ue.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -388,6 +395,48 @@
     <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\add_professeur.aspx.cs">
+      <DependentUpon>add_professeur.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\add_professeur.aspx.designer.cs">
+      <DependentUpon>add_professeur.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\add_secteur.aspx.cs">
+      <DependentUpon>add_secteur.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\add_secteur.aspx.designer.cs">
+      <DependentUpon>add_secteur.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\add_section.aspx.cs">
+      <DependentUpon>add_section.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\add_section.aspx.designer.cs">
+      <DependentUpon>add_section.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\add_sessionue.aspx.cs">
+      <DependentUpon>add_sessionue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\add_sessionue.aspx.designer.cs">
+      <DependentUpon>add_sessionue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\add_ue.aspx.cs">
+      <DependentUpon>add_ue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\add_ue.aspx.designer.cs">
+      <DependentUpon>add_ue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\dashboard.aspx.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\dashboard.aspx.designer.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\secteur.aspx.cs">
       <DependentUpon>secteur.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -401,6 +450,13 @@
     </Compile>
     <Compile Include="admin\section.aspx.designer.cs">
       <DependentUpon>section.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\sessionUE.aspx.cs">
+      <DependentUpon>sessionUE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\sessionUE.aspx.designer.cs">
+      <DependentUpon>sessionUE.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\ue.aspx.cs">
       <DependentUpon>ue.aspx</DependentUpon>
@@ -506,7 +562,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49818</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44316</IISUrl>
+          <IISUrl>http://localhost:44316</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
           <IISAppRootUrl>http://localhost:44316/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
