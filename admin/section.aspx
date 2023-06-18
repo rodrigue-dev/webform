@@ -12,12 +12,12 @@
      <div class="col-md-12 mb-4">
             <div class="card border-top-primary shadow h-100 py-2">
                 <div class="card-body">
-                    <asp:GridView ID="grvSection" DataKeyNames="ID" runat="server" AutoGenerateColumns="False" OnRowCommand="grvStudent_RowCommand" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <asp:GridView ID="grvSection" DataKeyNames="IDSECTION" runat="server" AutoGenerateColumns="False" OnRowCommand="grvStudent_RowCommand" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
-                            <asp:BoundField DataField="Debouches" HeaderText="Debouches" />
-                            <asp:BoundField DataField="Description" HeaderText="Description" />
-                            <asp:BoundField DataField="ImageSection" HeaderText="Image" />
+                            <asp:BoundField DataField="SECTEUR.INTITULE" HeaderText="Secteur" />
+                            <asp:BoundField DataField="DESCRIPTION" HeaderText="Description" />
+                            <asp:BoundField DataField="IMAGESECTION" HeaderText="Image" />
 
                             <asp:TemplateField>
                                 <ItemTemplate>

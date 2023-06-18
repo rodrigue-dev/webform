@@ -21,7 +21,7 @@
                     <div class="form-group col-6">
                         <asp:Label runat="server" AssociatedControlID="IdtxtPeriode">Periode</asp:Label>
                         <div>
-                            <asp:TextBox ID="IdtxtPeriode" runat="server"></asp:TextBox>
+                            <asp:TextBox TextMode="Number" ID="IdtxtPeriode" runat="server"></asp:TextBox>
                         </div>
 
                     </div>
@@ -31,6 +31,12 @@
                             <asp:TextBox ID="IdtxtEtcs" runat="server"></asp:TextBox>
                         </div>
 
+                    </div>
+                     <div class="form-group col-6">
+                        <asp:Label runat="server" AssociatedControlID="SECTIONID">SECTION</asp:Label>
+                        <div>
+                            <asp:DropDownList ID="SECTIONID" runat="server"></asp:DropDownList>
+                        </div>
                     </div>
                    
                      <div style="margin-bottom: 10px">

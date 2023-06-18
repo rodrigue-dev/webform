@@ -13,13 +13,13 @@
         <div class="col-md-12 mb-4">
             <div class="card border-top-primary shadow h-100 py-2">
                 <div class="card-body">
-                    <asp:GridView ID="grvStudent" DataKeyNames="ID" runat="server" AutoGenerateColumns="False" OnRowCommand="grvStudent_RowCommand" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <asp:GridView ID="grvStudent" DataKeyNames="IDPROFESSEUR" runat="server" AutoGenerateColumns="False" OnRowCommand="grvStudent_RowCommand" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
-                            <asp:BoundField DataField="FirstName" HeaderText="Nom" />
-                            <asp:BoundField DataField="LastName" HeaderText="Prenom" />
-                            <asp:BoundField DataField="Phone" HeaderText="Telephone" />
-                            <asp:BoundField DataField="Email" HeaderText="Email" />
+                            <asp:BoundField DataField="NOM" HeaderText="Nom" />
+                            <asp:BoundField DataField="PRENOM" HeaderText="Prenom" />
+                            <asp:BoundField DataField="TELEPHONE" HeaderText="Telephone" />
+                            <asp:BoundField DataField="EMAIL" HeaderText="Email" />
 
                             <asp:TemplateField>
                                 <ItemTemplate>

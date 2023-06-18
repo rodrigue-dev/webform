@@ -7,7 +7,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 
-namespace b_school
+namespace webschool
 {
     public class Global : HttpApplication
     {

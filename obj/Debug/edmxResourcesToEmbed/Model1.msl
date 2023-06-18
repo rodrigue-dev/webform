@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SitewebModelStoreContainer" CdmEntityContainer="SitewebEntities">
+    <EntitySetMapping Name="LOCALs">
+      <EntityTypeMapping TypeName="SitewebModel.LOCAL">
+        <MappingFragment StoreEntitySet="LOCAL">
+          <ScalarProperty Name="IDLOCAL" ColumnName="IDLOCAL" />
+          <ScalarProperty Name="LIEU" ColumnName="LIEU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="METIERs">
+      <EntityTypeMapping TypeName="SitewebModel.METIER">
+        <MappingFragment StoreEntitySet="METIER">
+          <ScalarProperty Name="IDMETIER" ColumnName="IDMETIER" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROFESSEURs">
+      <EntityTypeMapping TypeName="SitewebModel.PROFESSEUR">
+        <MappingFragment StoreEntitySet="PROFESSEUR">
+          <ScalarProperty Name="IDPROFESSEUR" ColumnName="IDPROFESSEUR" />
+          <ScalarProperty Name="NOM" ColumnName="NOM" />
+          <ScalarProperty Name="PRENOM" ColumnName="PRENOM" />
+          <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SECTEURs">
+      <EntityTypeMapping TypeName="SitewebModel.SECTEUR">
+        <MappingFragment StoreEntitySet="SECTEUR">
+          <ScalarProperty Name="IDSECTEUR" ColumnName="IDSECTEUR" />
+          <ScalarProperty Name="INTITULE" ColumnName="INTITULE" />
+          <ScalarProperty Name="DATEDEBUT" ColumnName="DATEDEBUT" />
+          <ScalarProperty Name="DATEFIN" ColumnName="DATEFIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SECTIONs">
+      <EntityTypeMapping TypeName="SitewebModel.SECTION">
+        <MappingFragment StoreEntitySet="SECTION">
+          <ScalarProperty Name="IDSECTION" ColumnName="IDSECTION" />
+          <ScalarProperty Name="IDSECTEUR" ColumnName="IDSECTEUR" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="IMAGESECTION" ColumnName="IMAGESECTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SESSIONUEs">
+      <EntityTypeMapping TypeName="SitewebModel.SESSIONUE">
+        <MappingFragment StoreEntitySet="SESSIONUE">
+          <ScalarProperty Name="IDSESSIONUE" ColumnName="IDSESSIONUE" />
+          <ScalarProperty Name="IDPROFESSEUR" ColumnName="IDPROFESSEUR" />
+          <ScalarProperty Name="IDUE" ColumnName="IDUE" />
+          <ScalarProperty Name="DATEDEBUT" ColumnName="DATEDEBUT" />
+          <ScalarProperty Name="DATEFIN" ColumnName="DATEFIN" />
+          <ScalarProperty Name="PERIODE" ColumnName="PERIODE" />
+          <ScalarProperty Name="HEUREDEBUT" ColumnName="HEUREDEBUT" />
+          <ScalarProperty Name="HEUREFIN" ColumnName="HEUREFIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UEs">
+      <EntityTypeMapping TypeName="SitewebModel.UE">
+        <MappingFragment StoreEntitySet="UE">
+          <ScalarProperty Name="IDUE" ColumnName="IDUE" />
+          <ScalarProperty Name="IDSECTION" ColumnName="IDSECTION" />
+          <ScalarProperty Name="TITRE" ColumnName="TITRE" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="PERIODE" ColumnName="PERIODE" />
+          <ScalarProperty Name="ECTS" ColumnName="ECTS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="DEBOUCHER" TypeName="SitewebModel.DEBOUCHER" StoreEntitySet="DEBOUCHER">
+      <EndProperty Name="METIER">
+        <ScalarProperty Name="IDMETIER" ColumnName="IDMETIER" />
+      </EndProperty>
+      <EndProperty Name="SECTION">
+        <ScalarProperty Name="IDSECTION" ColumnName="IDSECTION" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LOCALISER" TypeName="SitewebModel.LOCALISER" StoreEntitySet="LOCALISER">
+      <EndProperty Name="LOCAL">
+        <ScalarProperty Name="IDLOCAL" ColumnName="IDLOCAL" />
+      </EndProperty>
+      <EndProperty Name="SESSIONUE">
+        <ScalarProperty Name="IDSESSIONUE" ColumnName="IDSESSIONUE" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

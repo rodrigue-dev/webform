@@ -7,24 +7,21 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webschool;
 
 namespace b_school.admin
 {
     public partial class section : System.Web.UI.Page
     {
-        private readonly string connctionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-
+      
         protected void Page_Load(object sender, EventArgs e)
         {
-            using (SqlConnection xSqlConnection = new SqlConnection(connctionString))
+            using (var db = new Model1())
             {
-                string cmdText = "SELECT * FROM section";
-                SqlCommand xSqlCommand = new SqlCommand(cmdText, xSqlConnection);
-                SqlDataAdapter adapter = new SqlDataAdapter(xSqlCommand);
-                DataSet ds = new DataSet();
-                adapter.Fill(ds);
+                var query = db.SECTIONs.ToList();
 
-                grvSection.DataSource = ds;
+
+                grvSection.DataSource = query;
                 grvSection.DataBind();
             }
 
@@ -69,17 +66,7 @@ namespace b_school.admin
             int isDeleted = 0;
             if (ID != 0)
             {
-                using (SqlConnection xSqlConnection = new SqlConnection(connctionString))
-                {
-                    string cmdText = "DELETE FROM section WHERE ID=@id";
-                    SqlCommand xSqlCommand = new SqlCommand(cmdText, xSqlConnection);
-
-                    xSqlCommand.Parameters.AddWithValue("@id", ID);
-
-                    xSqlConnection.Open();
-                    isDeleted = xSqlCommand.ExecuteNonQuery();
-                    xSqlConnection.Close();
-                }
+                
             }
             return isDeleted > 0;
         }

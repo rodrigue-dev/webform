@@ -1,0 +1,518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SitewebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DEBOUCHER">
+          <Key>
+            <PropertyRef Name="IDSECTION" />
+            <PropertyRef Name="IDMETIER" />
+          </Key>
+          <Property Name="IDSECTION" Type="int" Nullable="false" />
+          <Property Name="IDMETIER" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOCAL">
+          <Key>
+            <PropertyRef Name="IDLOCAL" />
+          </Key>
+          <Property Name="IDLOCAL" Type="int" Nullable="false" />
+          <Property Name="LIEU" Type="varchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOCALISER">
+          <Key>
+            <PropertyRef Name="IDSESSIONUE" />
+            <PropertyRef Name="IDLOCAL" />
+          </Key>
+          <Property Name="IDSESSIONUE" Type="int" Nullable="false" />
+          <Property Name="IDLOCAL" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="METIER">
+          <Key>
+            <PropertyRef Name="IDMETIER" />
+          </Key>
+          <Property Name="IDMETIER" Type="int" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROFESSEUR">
+          <Key>
+            <PropertyRef Name="IDPROFESSEUR" />
+          </Key>
+          <Property Name="IDPROFESSEUR" Type="int" Nullable="false" />
+          <Property Name="NOM" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="PRENOM" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="TELEPHONE" Type="int" Nullable="false" />
+          <Property Name="EMAIL" Type="char" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SECTEUR">
+          <Key>
+            <PropertyRef Name="IDSECTEUR" />
+          </Key>
+          <Property Name="IDSECTEUR" Type="int" Nullable="false" />
+          <Property Name="INTITULE" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="DATEDEBUT" Type="date" Nullable="false" />
+          <Property Name="DATEFIN" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SECTION">
+          <Key>
+            <PropertyRef Name="IDSECTION" />
+          </Key>
+          <Property Name="IDSECTION" Type="int" Nullable="false" />
+          <Property Name="IDSECTEUR" Type="int" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="IMAGESECTION" Type="varchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SESSIONUE">
+          <Key>
+            <PropertyRef Name="IDSESSIONUE" />
+          </Key>
+          <Property Name="IDSESSIONUE" Type="int" Nullable="false" />
+          <Property Name="IDPROFESSEUR" Type="int" />
+          <Property Name="IDUE" Type="int" />
+          <Property Name="DATEDEBUT" Type="date" Nullable="false" />
+          <Property Name="DATEFIN" Type="date" Nullable="false" />
+          <Property Name="PERIODE" Type="int" Nullable="false" />
+          <Property Name="HEUREDEBUT" Type="time" Precision="7" Nullable="false" />
+          <Property Name="HEUREFIN" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UE">
+          <Key>
+            <PropertyRef Name="IDUE" />
+          </Key>
+          <Property Name="IDUE" Type="int" Nullable="false" />
+          <Property Name="IDSECTION" Type="int" />
+          <Property Name="TITRE" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="PERIODE" Type="int" Nullable="false" />
+          <Property Name="ECTS" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DEBOUCHER_METIER">
+          <End Role="METIER" Type="Self.METIER" Multiplicity="1" />
+          <End Role="DEBOUCHER" Type="Self.DEBOUCHER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="METIER">
+              <PropertyRef Name="IDMETIER" />
+            </Principal>
+            <Dependent Role="DEBOUCHER">
+              <PropertyRef Name="IDMETIER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEBOUCHER_SECTION">
+          <End Role="SECTION" Type="Self.SECTION" Multiplicity="1" />
+          <End Role="DEBOUCHER" Type="Self.DEBOUCHER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECTION">
+              <PropertyRef Name="IDSECTION" />
+            </Principal>
+            <Dependent Role="DEBOUCHER">
+              <PropertyRef Name="IDSECTION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOCALISER_LOCAL">
+          <End Role="LOCAL" Type="Self.LOCAL" Multiplicity="1" />
+          <End Role="LOCALISER" Type="Self.LOCALISER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCAL">
+              <PropertyRef Name="IDLOCAL" />
+            </Principal>
+            <Dependent Role="LOCALISER">
+              <PropertyRef Name="IDLOCAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOCALISER_SESSIONUE">
+          <End Role="SESSIONUE" Type="Self.SESSIONUE" Multiplicity="1" />
+          <End Role="LOCALISER" Type="Self.LOCALISER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SESSIONUE">
+              <PropertyRef Name="IDSESSIONUE" />
+            </Principal>
+            <Dependent Role="LOCALISER">
+              <PropertyRef Name="IDSESSIONUE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SECTION_SECTEUR">
+          <End Role="SECTEUR" Type="Self.SECTEUR" Multiplicity="1" />
+          <End Role="SECTION" Type="Self.SECTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECTEUR">
+              <PropertyRef Name="IDSECTEUR" />
+            </Principal>
+            <Dependent Role="SECTION">
+              <PropertyRef Name="IDSECTEUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SESSIONUE_PROFESSEUR">
+          <End Role="PROFESSEUR" Type="Self.PROFESSEUR" Multiplicity="0..1" />
+          <End Role="SESSIONUE" Type="Self.SESSIONUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESSEUR">
+              <PropertyRef Name="IDPROFESSEUR" />
+            </Principal>
+            <Dependent Role="SESSIONUE">
+              <PropertyRef Name="IDPROFESSEUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SESSIONUE_UE">
+          <End Role="UE" Type="Self.UE" Multiplicity="0..1" />
+          <End Role="SESSIONUE" Type="Self.SESSIONUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UE">
+              <PropertyRef Name="IDUE" />
+            </Principal>
+            <Dependent Role="SESSIONUE">
+              <PropertyRef Name="IDUE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UE_SECTION">
+          <End Role="SECTION" Type="Self.SECTION" Multiplicity="0..1" />
+          <End Role="UE" Type="Self.UE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECTION">
+              <PropertyRef Name="IDSECTION" />
+            </Principal>
+            <Dependent Role="UE">
+              <PropertyRef Name="IDSECTION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SitewebModelStoreContainer">
+          <EntitySet Name="DEBOUCHER" EntityType="Self.DEBOUCHER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOCAL" EntityType="Self.LOCAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOCALISER" EntityType="Self.LOCALISER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="METIER" EntityType="Self.METIER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROFESSEUR" EntityType="Self.PROFESSEUR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SECTEUR" EntityType="Self.SECTEUR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SECTION" EntityType="Self.SECTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SESSIONUE" EntityType="Self.SESSIONUE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UE" EntityType="Self.UE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DEBOUCHER_METIER" Association="Self.FK_DEBOUCHER_METIER">
+            <End Role="METIER" EntitySet="METIER" />
+            <End Role="DEBOUCHER" EntitySet="DEBOUCHER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEBOUCHER_SECTION" Association="Self.FK_DEBOUCHER_SECTION">
+            <End Role="SECTION" EntitySet="SECTION" />
+            <End Role="DEBOUCHER" EntitySet="DEBOUCHER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOCALISER_LOCAL" Association="Self.FK_LOCALISER_LOCAL">
+            <End Role="LOCAL" EntitySet="LOCAL" />
+            <End Role="LOCALISER" EntitySet="LOCALISER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOCALISER_SESSIONUE" Association="Self.FK_LOCALISER_SESSIONUE">
+            <End Role="SESSIONUE" EntitySet="SESSIONUE" />
+            <End Role="LOCALISER" EntitySet="LOCALISER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SECTION_SECTEUR" Association="Self.FK_SECTION_SECTEUR">
+            <End Role="SECTEUR" EntitySet="SECTEUR" />
+            <End Role="SECTION" EntitySet="SECTION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SESSIONUE_PROFESSEUR" Association="Self.FK_SESSIONUE_PROFESSEUR">
+            <End Role="PROFESSEUR" EntitySet="PROFESSEUR" />
+            <End Role="SESSIONUE" EntitySet="SESSIONUE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SESSIONUE_UE" Association="Self.FK_SESSIONUE_UE">
+            <End Role="UE" EntitySet="UE" />
+            <End Role="SESSIONUE" EntitySet="SESSIONUE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UE_SECTION" Association="Self.FK_UE_SECTION">
+            <End Role="SECTION" EntitySet="SECTION" />
+            <End Role="UE" EntitySet="UE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SitewebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LOCAL">
+          <Key>
+            <PropertyRef Name="IDLOCAL" />
+          </Key>
+          <Property Name="IDLOCAL" Type="Int32" Nullable="false" />
+          <Property Name="LIEU" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SESSIONUEs" Relationship="Self.LOCALISER" FromRole="LOCAL" ToRole="SESSIONUE" />
+        </EntityType>
+        <EntityType Name="METIER">
+          <Key>
+            <PropertyRef Name="IDMETIER" />
+          </Key>
+          <Property Name="IDMETIER" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SECTIONs" Relationship="Self.DEBOUCHER" FromRole="METIER" ToRole="SECTION" />
+        </EntityType>
+        <EntityType Name="PROFESSEUR">
+          <Key>
+            <PropertyRef Name="IDPROFESSEUR" />
+          </Key>
+          <Property Name="IDPROFESSEUR" Type="Int32" Nullable="false" />
+          <Property Name="NOM" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PRENOM" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TELEPHONE" Type="Int32" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SESSIONUEs" Relationship="Self.FK_SESSIONUE_PROFESSEUR" FromRole="PROFESSEUR" ToRole="SESSIONUE" />
+        </EntityType>
+        <EntityType Name="SECTEUR">
+          <Key>
+            <PropertyRef Name="IDSECTEUR" />
+          </Key>
+          <Property Name="IDSECTEUR" Type="Int32" Nullable="false" />
+          <Property Name="INTITULE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DATEDEBUT" Type="DateTime" Nullable="false" />
+          <Property Name="DATEFIN" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="SECTIONs" Relationship="Self.FK_SECTION_SECTEUR" FromRole="SECTEUR" ToRole="SECTION" />
+        </EntityType>
+        <EntityType Name="SECTION">
+          <Key>
+            <PropertyRef Name="IDSECTION" />
+          </Key>
+          <Property Name="IDSECTION" Type="Int32" Nullable="false" />
+          <Property Name="IDSECTEUR" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IMAGESECTION" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SECTEUR" Relationship="Self.FK_SECTION_SECTEUR" FromRole="SECTION" ToRole="SECTEUR" />
+          <NavigationProperty Name="UEs" Relationship="Self.FK_UE_SECTION" FromRole="SECTION" ToRole="UE" />
+          <NavigationProperty Name="METIERs" Relationship="Self.DEBOUCHER" FromRole="SECTION" ToRole="METIER" />
+        </EntityType>
+        <EntityType Name="SESSIONUE">
+          <Key>
+            <PropertyRef Name="IDSESSIONUE" />
+          </Key>
+          <Property Name="IDSESSIONUE" Type="Int32" Nullable="false" />
+          <Property Name="IDPROFESSEUR" Type="Int32" />
+          <Property Name="IDUE" Type="Int32" />
+          <Property Name="DATEDEBUT" Type="DateTime" Nullable="false" />
+          <Property Name="DATEFIN" Type="DateTime" Nullable="false" />
+          <Property Name="PERIODE" Type="Int32" Nullable="false" />
+          <Property Name="HEUREDEBUT" Type="Time" Nullable="false" />
+          <Property Name="HEUREFIN" Type="Time" Nullable="false" />
+          <NavigationProperty Name="PROFESSEUR" Relationship="Self.FK_SESSIONUE_PROFESSEUR" FromRole="SESSIONUE" ToRole="PROFESSEUR" />
+          <NavigationProperty Name="UE" Relationship="Self.FK_SESSIONUE_UE" FromRole="SESSIONUE" ToRole="UE" />
+          <NavigationProperty Name="LOCALs" Relationship="Self.LOCALISER" FromRole="SESSIONUE" ToRole="LOCAL" />
+        </EntityType>
+        <EntityType Name="UE">
+          <Key>
+            <PropertyRef Name="IDUE" />
+          </Key>
+          <Property Name="IDUE" Type="Int32" Nullable="false" />
+          <Property Name="IDSECTION" Type="Int32" />
+          <Property Name="TITRE" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PERIODE" Type="Int32" Nullable="false" />
+          <Property Name="ECTS" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SECTION" Relationship="Self.FK_UE_SECTION" FromRole="UE" ToRole="SECTION" />
+          <NavigationProperty Name="SESSIONUEs" Relationship="Self.FK_SESSIONUE_UE" FromRole="UE" ToRole="SESSIONUE" />
+        </EntityType>
+        <Association Name="FK_SESSIONUE_PROFESSEUR">
+          <End Role="PROFESSEUR" Type="Self.PROFESSEUR" Multiplicity="0..1" />
+          <End Role="SESSIONUE" Type="Self.SESSIONUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESSEUR">
+              <PropertyRef Name="IDPROFESSEUR" />
+            </Principal>
+            <Dependent Role="SESSIONUE">
+              <PropertyRef Name="IDPROFESSEUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SECTION_SECTEUR">
+          <End Role="SECTEUR" Type="Self.SECTEUR" Multiplicity="1" />
+          <End Role="SECTION" Type="Self.SECTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECTEUR">
+              <PropertyRef Name="IDSECTEUR" />
+            </Principal>
+            <Dependent Role="SECTION">
+              <PropertyRef Name="IDSECTEUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UE_SECTION">
+          <End Role="SECTION" Type="Self.SECTION" Multiplicity="0..1" />
+          <End Role="UE" Type="Self.UE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECTION">
+              <PropertyRef Name="IDSECTION" />
+            </Principal>
+            <Dependent Role="UE">
+              <PropertyRef Name="IDSECTION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SESSIONUE_UE">
+          <End Role="UE" Type="Self.UE" Multiplicity="0..1" />
+          <End Role="SESSIONUE" Type="Self.SESSIONUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UE">
+              <PropertyRef Name="IDUE" />
+            </Principal>
+            <Dependent Role="SESSIONUE">
+              <PropertyRef Name="IDUE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DEBOUCHER">
+          <End Role="METIER" Type="Self.METIER" Multiplicity="*" />
+          <End Role="SECTION" Type="Self.SECTION" Multiplicity="*" />
+        </Association>
+        <Association Name="LOCALISER">
+          <End Role="LOCAL" Type="Self.LOCAL" Multiplicity="*" />
+          <End Role="SESSIONUE" Type="Self.SESSIONUE" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="SitewebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LOCALs" EntityType="Self.LOCAL" />
+          <EntitySet Name="METIERs" EntityType="Self.METIER" />
+          <EntitySet Name="PROFESSEURs" EntityType="Self.PROFESSEUR" />
+          <EntitySet Name="SECTEURs" EntityType="Self.SECTEUR" />
+          <EntitySet Name="SECTIONs" EntityType="Self.SECTION" />
+          <EntitySet Name="SESSIONUEs" EntityType="Self.SESSIONUE" />
+          <EntitySet Name="UEs" EntityType="Self.UE" />
+          <AssociationSet Name="FK_SESSIONUE_PROFESSEUR" Association="Self.FK_SESSIONUE_PROFESSEUR">
+            <End Role="PROFESSEUR" EntitySet="PROFESSEURs" />
+            <End Role="SESSIONUE" EntitySet="SESSIONUEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SECTION_SECTEUR" Association="Self.FK_SECTION_SECTEUR">
+            <End Role="SECTEUR" EntitySet="SECTEURs" />
+            <End Role="SECTION" EntitySet="SECTIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UE_SECTION" Association="Self.FK_UE_SECTION">
+            <End Role="SECTION" EntitySet="SECTIONs" />
+            <End Role="UE" EntitySet="UEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SESSIONUE_UE" Association="Self.FK_SESSIONUE_UE">
+            <End Role="UE" EntitySet="UEs" />
+            <End Role="SESSIONUE" EntitySet="SESSIONUEs" />
+          </AssociationSet>
+          <AssociationSet Name="DEBOUCHER" Association="Self.DEBOUCHER">
+            <End Role="METIER" EntitySet="METIERs" />
+            <End Role="SECTION" EntitySet="SECTIONs" />
+          </AssociationSet>
+          <AssociationSet Name="LOCALISER" Association="Self.LOCALISER">
+            <End Role="LOCAL" EntitySet="LOCALs" />
+            <End Role="SESSIONUE" EntitySet="SESSIONUEs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SitewebModelStoreContainer" CdmEntityContainer="SitewebEntities">
+          <EntitySetMapping Name="LOCALs">
+            <EntityTypeMapping TypeName="SitewebModel.LOCAL">
+              <MappingFragment StoreEntitySet="LOCAL">
+                <ScalarProperty Name="IDLOCAL" ColumnName="IDLOCAL" />
+                <ScalarProperty Name="LIEU" ColumnName="LIEU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="METIERs">
+            <EntityTypeMapping TypeName="SitewebModel.METIER">
+              <MappingFragment StoreEntitySet="METIER">
+                <ScalarProperty Name="IDMETIER" ColumnName="IDMETIER" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROFESSEURs">
+            <EntityTypeMapping TypeName="SitewebModel.PROFESSEUR">
+              <MappingFragment StoreEntitySet="PROFESSEUR">
+                <ScalarProperty Name="IDPROFESSEUR" ColumnName="IDPROFESSEUR" />
+                <ScalarProperty Name="NOM" ColumnName="NOM" />
+                <ScalarProperty Name="PRENOM" ColumnName="PRENOM" />
+                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SECTEURs">
+            <EntityTypeMapping TypeName="SitewebModel.SECTEUR">
+              <MappingFragment StoreEntitySet="SECTEUR">
+                <ScalarProperty Name="IDSECTEUR" ColumnName="IDSECTEUR" />
+                <ScalarProperty Name="INTITULE" ColumnName="INTITULE" />
+                <ScalarProperty Name="DATEDEBUT" ColumnName="DATEDEBUT" />
+                <ScalarProperty Name="DATEFIN" ColumnName="DATEFIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SECTIONs">
+            <EntityTypeMapping TypeName="SitewebModel.SECTION">
+              <MappingFragment StoreEntitySet="SECTION">
+                <ScalarProperty Name="IDSECTION" ColumnName="IDSECTION" />
+                <ScalarProperty Name="IDSECTEUR" ColumnName="IDSECTEUR" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="IMAGESECTION" ColumnName="IMAGESECTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SESSIONUEs">
+            <EntityTypeMapping TypeName="SitewebModel.SESSIONUE">
+              <MappingFragment StoreEntitySet="SESSIONUE">
+                <ScalarProperty Name="IDSESSIONUE" ColumnName="IDSESSIONUE" />
+                <ScalarProperty Name="IDPROFESSEUR" ColumnName="IDPROFESSEUR" />
+                <ScalarProperty Name="IDUE" ColumnName="IDUE" />
+                <ScalarProperty Name="DATEDEBUT" ColumnName="DATEDEBUT" />
+                <ScalarProperty Name="DATEFIN" ColumnName="DATEFIN" />
+                <ScalarProperty Name="PERIODE" ColumnName="PERIODE" />
+                <ScalarProperty Name="HEUREDEBUT" ColumnName="HEUREDEBUT" />
+                <ScalarProperty Name="HEUREFIN" ColumnName="HEUREFIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UEs">
+            <EntityTypeMapping TypeName="SitewebModel.UE">
+              <MappingFragment StoreEntitySet="UE">
+                <ScalarProperty Name="IDUE" ColumnName="IDUE" />
+                <ScalarProperty Name="IDSECTION" ColumnName="IDSECTION" />
+                <ScalarProperty Name="TITRE" ColumnName="TITRE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="PERIODE" ColumnName="PERIODE" />
+                <ScalarProperty Name="ECTS" ColumnName="ECTS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="DEBOUCHER" TypeName="SitewebModel.DEBOUCHER" StoreEntitySet="DEBOUCHER">
+            <EndProperty Name="METIER">
+              <ScalarProperty Name="IDMETIER" ColumnName="IDMETIER" />
+            </EndProperty>
+            <EndProperty Name="SECTION">
+              <ScalarProperty Name="IDSECTION" ColumnName="IDSECTION" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="LOCALISER" TypeName="SitewebModel.LOCALISER" StoreEntitySet="LOCALISER">
+            <EndProperty Name="LOCAL">
+              <ScalarProperty Name="IDLOCAL" ColumnName="IDLOCAL" />
+            </EndProperty>
+            <EndProperty Name="SESSIONUE">
+              <ScalarProperty Name="IDSESSIONUE" ColumnName="IDSESSIONUE" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

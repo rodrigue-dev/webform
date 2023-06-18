@@ -12,13 +12,13 @@
      <div class="col-md-12 mb-4">
             <div class="card border-top-primary shadow h-100 py-2">
                 <div class="card-body">
-                    <asp:GridView ID="grvUE" DataKeyNames="ID" runat="server" AutoGenerateColumns="False" OnRowCommand="grvStudent_RowCommand" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <asp:GridView ID="grvUE" DataKeyNames="IDUE" runat="server" AutoGenerateColumns="False" OnRowCommand="grvStudent_RowCommand" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
-                            <asp:BoundField DataField="Titre" HeaderText="Titre" />
-                            <asp:BoundField DataField="Periode" HeaderText="Peroide" />
-                            <asp:BoundField DataField="Etcs" HeaderText="Ects" />
-                            
+                            <asp:BoundField DataField="TITRE" HeaderText="Titre" />
+                            <asp:BoundField DataField="PERIODE" HeaderText="Peroide" />
+                            <asp:BoundField DataField="ECTS" HeaderText="Ects" />
+                             <asp:BoundField DataField="DESCRIPTION" HeaderText="Description" />
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:Button runat="server" ID="btnEdit" CausesValidation="false" CommandName="EditStudent" Text="Edit" />

@@ -7,26 +7,23 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using webschool;
 
 namespace b_school.admin
 {
     public partial class ue : System.Web.UI.Page
     {
-        private readonly string connctionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-
+      
         protected void Page_Load(object sender, EventArgs e)
         {
-            using (SqlConnection xSqlConnection = new SqlConnection(connctionString))
+            using (var db = new Model1())
             {
-                string cmdText = "SELECT * FROM uE";
-                SqlCommand xSqlCommand = new SqlCommand(cmdText, xSqlConnection);
-                SqlDataAdapter adapter = new SqlDataAdapter(xSqlCommand);
-                DataSet ds = new DataSet();
-                adapter.Fill(ds);
-
-                grvUE.DataSource = ds;
+                var query = db.UEs.ToList();
+               
+                grvUE.DataSource = query;
                 grvUE.DataBind();
             }
+       
 
         }
         protected void grvStudent_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -69,17 +66,17 @@ namespace b_school.admin
             int isDeleted = 0;
             if (ID != 0)
             {
-                using (SqlConnection xSqlConnection = new SqlConnection(connctionString))
-                {
-                    string cmdText = "DELETE FROM uE WHERE ID=@id";
-                    SqlCommand xSqlCommand = new SqlCommand(cmdText, xSqlConnection);
+                //using (SqlConnection xSqlConnection = new SqlConnection(connctionString))
+                //{
+                //    string cmdText = "DELETE FROM uE WHERE ID=@id";
+                //    SqlCommand xSqlCommand = new SqlCommand(cmdText, xSqlConnection);
 
-                    xSqlCommand.Parameters.AddWithValue("@id", ID);
+                //    xSqlCommand.Parameters.AddWithValue("@id", ID);
 
-                    xSqlConnection.Open();
-                    isDeleted = xSqlCommand.ExecuteNonQuery();
-                    xSqlConnection.Close();
-                }
+                //    xSqlConnection.Open();
+                //    isDeleted = xSqlCommand.ExecuteNonQuery();
+                //    xSqlConnection.Close();
+                //}
             }
             return isDeleted > 0;
         }

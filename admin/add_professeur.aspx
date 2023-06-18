@@ -39,7 +39,7 @@
                         </div>
 
                     </div>
-                     <div class="form-group col-6">
+                    <%-- <div class="form-group col-6">
                         <asp:Label runat="server" AssociatedControlID="Ues">UE</asp:Label>
                         <div>
                             <asp:DropDownList ID="Ues" runat="server"></asp:DropDownList>
@@ -50,7 +50,7 @@
                         <div>
                             <asp:DropDownList ID="SessionUe" runat="server"></asp:DropDownList>
                         </div>
-                    </div>
+                    </div>--%>
                      <div style="margin-bottom: 10px">
                <div>
                   <asp:Button runat="server" OnClick="Save" Text="Enregistrer" />

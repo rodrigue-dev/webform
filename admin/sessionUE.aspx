@@ -13,15 +13,16 @@
         <div class="col-md-12 mb-4">
             <div class="card border-top-primary shadow h-100 py-2">
                 <div class="card-body">
-                    <asp:GridView ID="grvStudent" DataKeyNames="ID" runat="server" AutoGenerateColumns="False" OnRowCommand="grvStudent_RowCommand" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <asp:GridView ID="grvStudent" DataKeyNames="IDSESSIONUE" runat="server" AutoGenerateColumns="False" OnRowCommand="grvStudent_RowCommand" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
                             <asp:BoundField DataField="Periode" HeaderText="Periode" />
-                            <asp:BoundField DataField="Lieu" HeaderText="Lieu" />
-                            <asp:BoundField DataField="DateDebut" HeaderText="Date de debut" />
-                            <asp:BoundField DataField="DateFin" HeaderText="Date de fin" />
-                             <asp:BoundField DataField="Etcs" HeaderText="Etcs" />
-
+                           <%-- <asp:BoundField DataField="Lieu" HeaderText="Lieu" />--%>
+                            <asp:BoundField DataField="DATEDEBUT" HeaderText="Date de debut" />
+                            <asp:BoundField DataField="DATEFIN" HeaderText="Date de fin" />
+                             <asp:BoundField DataField="HEUREDEBUT" HeaderText="Heure de debut" />
+                            <asp:BoundField DataField="PROFESSEUR.NOM" HeaderText="Professeur" />
+                            <asp:BoundField DataField="UE.TITRE" HeaderText="UE" />
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:Button runat="server" ID="btnEdit" CausesValidation="false" CommandName="EditStudent" Text="Edit" />

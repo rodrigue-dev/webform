@@ -32,6 +32,12 @@
                         </div>
 
                     </div>
+                     <div class="form-group col-6">
+                        <asp:Label runat="server" AssociatedControlID="SecteurID">SecteurID</asp:Label>
+                        <div>
+                            <asp:DropDownList ID="SecteurID" runat="server"></asp:DropDownList>
+                        </div>
+                    </div>
                   
                      <div style="margin-bottom: 10px">
                <div>

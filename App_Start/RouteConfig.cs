@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.Routing;
 using Microsoft.AspNet.FriendlyUrls;
 
-namespace b_school
+namespace webschool
 {
     public static class RouteConfig
     {
