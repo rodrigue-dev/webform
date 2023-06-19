@@ -16,7 +16,7 @@ namespace webschool
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IDLOCAL { get; set; }
 
         [Required]

@@ -16,7 +16,7 @@ namespace webschool
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IDUE { get; set; }
 
         public int? IDSECTION { get; set; }

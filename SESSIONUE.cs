@@ -16,7 +16,7 @@ namespace webschool
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IDSESSIONUE { get; set; }
 
         public int? IDPROFESSEUR { get; set; }
