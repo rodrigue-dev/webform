@@ -50,13 +50,25 @@
                 <a href="/" class="nav-item nav-link active">Accueil</a>
                 <a href="/About" class="nav-item nav-link">About</a>
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sections</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Secteurs</a>
                     <div class="dropdown-menu fade-down m-0">
-                         <asp:DropDownList ID="SectionsID" runat="server" CssClass="nav-link dropdown-toggle">
+                        <asp:Repeater id="unorderedList" runat="server" OnItemDataBound="unorderedList_ItemDataBound">
+   <HeaderTemplate>
+       <ul>
+   </HeaderTemplate>
+   <ItemTemplate>
+          <li><asp:Literal id="myItem" runat="server" /></li>
+   </ItemTemplate>
+   <FooterTemplate>
+       </ul>
+   </FooterTemplate>
+</asp:Repeater>
+                       <%-- <asp:DropDownList ID="SectionsID" runat="server" CssClass="nav-link dropdown-toggle">
                             
                            
                          </asp:DropDownList>
-                       
+              --%>
+                     
                        <%-- <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                         <a href="404.html" class="dropdown-item">404 Page</a>--%>
                     </div>

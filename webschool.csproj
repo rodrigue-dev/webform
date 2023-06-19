@@ -219,6 +219,8 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Secteurview.aspx" />
+    <Content Include="sectionPage.aspx" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -341,7 +343,21 @@
     <Compile Include="PROFESSEUR.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SECTEUR.cs" />
+    <Compile Include="Secteurview.aspx.cs">
+      <DependentUpon>Secteurview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secteurview.aspx.designer.cs">
+      <DependentUpon>Secteurview.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SECTION.cs" />
+    <Compile Include="sectionPage.aspx.cs">
+      <DependentUpon>sectionPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sectionPage.aspx.designer.cs">
+      <DependentUpon>sectionPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SESSIONUE.cs" />
     <Compile Include="Site.Admin.Master.cs">
       <DependentUpon>Site.Admin.Master</DependentUpon>

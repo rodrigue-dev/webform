@@ -15,13 +15,13 @@ namespace webschool
     {
 
         /// <summary>
-        /// SectionsID control.
+        /// unorderedList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList SectionsID;
+        protected global::System.Web.UI.WebControls.Repeater unorderedList;
 
         /// <summary>
         /// MainContent control.

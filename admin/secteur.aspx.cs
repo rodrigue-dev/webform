@@ -66,6 +66,7 @@ namespace b_school.admin
             int isDeleted = 0;
             if (ID != 0)
             {
+
                
             }
             return isDeleted > 0;

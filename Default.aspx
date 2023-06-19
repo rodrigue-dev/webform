@@ -2,9 +2,9 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-     <!-- Carousel Start -->
+    <!-- Carousel Start -->
     <div class="container-fluid p-0 mb-5">
-<%--         <asp:DataList runat="server" ID="dtlprodutos" RepeatColumns="3" OnItemDataBound="dtlProdutos_ItemDataBound" OnItemCommand="dtlProdutos_ItemCommand">
+        <%--         <asp:DataList runat="server" ID="dtlprodutos" RepeatColumns="3" OnItemDataBound="dtlProdutos_ItemDataBound" OnItemCommand="dtlProdutos_ItemCommand">
             <ItemTemplate>
                 <div class="prod_box">
                     <div class="top_prod_box">
@@ -41,8 +41,8 @@
                                 <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Nos meilleurs formations</h5>
                                 <h1 class="display-3 text-white animated slideInDown">The Best Online Learning Platform</h1>
                                 <p class="fs-5 text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus eirmod elitr.</p>
-                               <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Lire plus</a>
-                            <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Rejoindre maintenant</a>
+                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Lire plus</a>
+                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Rejoindre maintenant</a>
                             </div>
                         </div>
                     </div>
@@ -57,8 +57,8 @@
                                 <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Nos meilleurs formations</h5>
                                 <h1 class="display-3 text-white animated slideInDown">Get Educated Online From Your Home</h1>
                                 <p class="fs-5 text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus eirmod elitr.</p>
-                               <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Lire plus</a>
-                            <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Rejoindre maintenant</a>
+                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Lire plus</a>
+                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Rejoindre maintenant</a>
                             </div>
                         </div>
                     </div>
@@ -162,53 +162,31 @@
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title bg-white text-center text-primary px-3">Sections</h6>
-                <h1 class="mb-5">Nos sections</h1>
+                <h1 class="mb-5">Nos secteurs</h1>
             </div>
             <div class="row g-3">
                 <div class="col-lg-7 col-md-6">
                     <div class="row g-3">
-                        <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
-                            <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="/Content/img/cat-1.jpg" alt="">
-                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Web Design</h5>
-                                    <small class="text-primary">49 Courses</small>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
-                            <a class="position-relative d-block overflow-hidden" href="">
+         <asp:DataList
+            runat="server" ID="dtlSections"  BorderColor="black"
+            RepeatColumns="3">
+            <ItemTemplate>
+              <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
+                            <a class="position-relative d-block overflow-hidden" href="/Secteurview?Item="<%# DataBinder.Eval(Container.DataItem, "INTITULE") %>">
                                 <img class="img-fluid" src="/Content/img/cat-2.jpg" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Graphic Design</h5>
-                                    <small class="text-primary">49 Courses</small>
+                                    <h5 class="m-0">  <%# DataBinder.Eval(Container.DataItem, "INTITULE") %></h5>
+                                    <small class="text-primary">49 Sections</small>
                                 </div>
                             </a>
                         </div>
-                        <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
-                            <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="/Content/img/cat-3.jpg" alt="">
-                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Video Editing</h5>
-                                    <small class="text-primary">49 Courses</small>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
-                    <a class="position-relative d-block h-100 overflow-hidden" href="">
-                        <img class="img-fluid position-absolute w-100 h-100" src="/Content/img/cat-4.jpg" alt="" style="object-fit: cover;">
-                        <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin:  1px;">
-                            <h5 class="m-0">Online Marketing</h5>
-                            <small class="text-primary">49 Courses</small>
-                        </div>
-                    </a>
-                </div>
+            </ItemTemplate>
+        </asp:DataList>
+                       
             </div>
-              <div class="text-center mt-3">
-			<a class="btn btn-primary py-3 px-5 mt-2" href="">Voir plus</a>
-        </div>
+            <div class="text-center mt-3">
+                <a class="btn btn-primary py-3 px-5 mt-2" href="">Voir plus</a>
+            </div>
         </div>
     </div>
     <!-- Categories Start -->

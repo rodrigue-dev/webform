@@ -4,6 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
+      <Diagram DiagramId="1c086b566f6d4192866fb8f3a9d5cf41" Name="Diagram1">
+        <EntityTypeShape EntityType="SitewebModel.LOCAL" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SitewebModel.METIER" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SitewebModel.PROFESSEUR" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SitewebModel.SECTEUR" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SitewebModel.SECTION" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SitewebModel.SESSIONUE" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SitewebModel.UE" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="SitewebModel.FK_SESSIONUE_PROFESSEUR" ManuallyRouted="false" />
+        <AssociationConnector Association="SitewebModel.FK_SECTION_SECTEUR" ManuallyRouted="false" />
+        <AssociationConnector Association="SitewebModel.FK_UE_SECTION" ManuallyRouted="false" />
+        <AssociationConnector Association="SitewebModel.FK_SESSIONUE_UE" ManuallyRouted="false" />
+        <AssociationConnector Association="SitewebModel.DEBOUCHER" ManuallyRouted="false" />
+        <AssociationConnector Association="SitewebModel.LOCALISER" ManuallyRouted="false" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

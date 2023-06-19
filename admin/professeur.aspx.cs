@@ -21,8 +21,8 @@ namespace b_school
                 var query = db.PROFESSEURs.ToList();
 
 
-                grvStudent.DataSource = query;
-                grvStudent.DataBind();
+                grvProfeseur.DataSource = query;
+                grvProfeseur.DataBind();
             }
 
         }

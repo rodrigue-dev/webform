@@ -11,7 +11,14 @@ namespace webschool
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            using (var db = new Model1())
+            {
+                var querys = db.SECTEURs.ToList();
+                // var query = db.SECTEURs.ToList();
+                dtlSections.DataSource = querys;
+                dtlSections.DataBind();
+                
+                    }
         }
     }
 }

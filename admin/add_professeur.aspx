@@ -14,14 +14,14 @@
                     <div class="form-group col-6">
                         <asp:Label runat="server" AssociatedControlID="IdtxtFirstName">Nom</asp:Label>
                         <div>
-                            <asp:TextBox ID="IdtxtFirstName" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="IdtxtFirstName" runat="server" Width="207px"></asp:TextBox>
                         </div>
 
                     </div>
                     <div class="form-group col-6">
                         <asp:Label runat="server" AssociatedControlID="IdtxtLastname">Prenom</asp:Label>
                         <div>
-                            <asp:TextBox ID="IdtxtLastname" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="IdtxtLastname" runat="server" Width="212px"></asp:TextBox>
                         </div>
 
                     </div>
